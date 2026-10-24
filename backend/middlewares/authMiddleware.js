@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
-import User from '../models/user'
-import asyncHandler from './asyncHandler'
+import User from '../models/user.js'
+import asyncHandler from './asyncHandler.js'
 
 //check whether the user is authenticated or not
 
@@ -27,7 +27,7 @@ const authenticate = asyncHandler(async(req,res,next)=>{
 })
 
 const authorizeAdmin = (req,res,next)=>{
-    if(req.user && req.user.userId){
+    if(req.user && req.user.isAdmin){
         next()
     }
     else {
